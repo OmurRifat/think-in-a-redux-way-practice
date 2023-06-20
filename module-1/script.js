@@ -8,18 +8,37 @@ const initialState = {
     value: 0
 }
 
+//action idennitifier
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+
+//action creator 
+const increment = (value) => {
+    return {
+        type: INCREMENT,
+        payload: value
+    }
+}
+const decrement = (value) => {
+    return {
+        type: DECREMENT,
+        payload: value
+    }
+}
+
+
 //create the reducer function
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "INCREMENT":
+        case INCREMENT:
             return {
                 ...state,
-                value: state.value + 1,
+                value: state.value + action.payload,
             }
-        case "DECREMENT":
+        case DECREMENT:
             return {
                 ...state,
-                value: state.value - 1,
+                value: state.value - action.payload,
             }
         default:
             return state;
@@ -43,14 +62,10 @@ store.subscribe(render);
 
 //dispatch the action
 incrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: "INCREMENT"
-    });
+    store.dispatch(increment(2));
 });
 
 decrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: "DECREMENT"
-    });
+    store.dispatch(decrement(1));
 }
 );
