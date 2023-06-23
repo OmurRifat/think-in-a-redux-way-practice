@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LWS Assignment 1 - Scoreboard</title>
     <link rel="icon" type="image/x-icon" href="./image/favicon.png" />
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -25,25 +26,25 @@
         <!-- matches  -->
         <div id="all-match-container" class="all-matches container">
             <!-- Each form tag is Each row, This will render multiple times on Clicking 'Add Another Match' -->
-            <div class="match">
+            <div id="match1" class="match">
                 <div class="wrapper">
-                    <button class="lws-delete">
+                    <button id="delete-match1" class="lws-delete">
                         <img src="./image/delete.svg" alt="" />
                     </button>
                     <h3 class="lws-matchName">Match 1</h3>
                 </div>
                 <div class="inc-dec">
-                    <form class="incrementForm">
+                    <form id="incrementForm1" class="incrementForm">
                         <h4>Increment</h4>
-                        <input type="number" name="increment" class="lws-increment" />
+                        <input type="number" name="increment1" class="lws-increment" />
                     </form>
-                    <form class="decrementForm">
+                    <form id="decrementForm1" class="decrementForm">
                         <h4>Decrement</h4>
-                        <input type="number" name="decrement" class="lws-decrement" />
+                        <input type="number" name="decrement1" class="lws-decrement" />
                     </form>
                 </div>
                 <div class="numbers">
-                    <h2 class="lws-singleResult">120</h2>
+                    <h2 id="total-score1" class="lws-singleResult">120</h2>
                 </div>
             </div>
         </div>
