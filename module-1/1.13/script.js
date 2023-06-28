@@ -8,21 +8,22 @@ const decrementForm = document.getElementById('decrementForm1');
 let matchCounter = 1;
 let matchArray = new Array(matchCounter);
 
-const initialState = {
-    value: 0,
-}
+const initialState = [{
+    id: 0,
+    value: 0
+}]
 
 function scoreReducer(state = initialState, action) {
     switch (action.type) {
         case 'increment':
             return {
                 ...state,
-                value: state.value + action.payload,
+                value: state.value + action.payload >= 0 ? state.value + action.payload : 0,
             }
         case 'decrement':
             return {
                 ...state,
-                value: state.value - action.payload,
+                value: state.value - action.payload >= 0 ? state.value - action.payload : 0,
             }
         default:
             return state;
@@ -34,12 +35,11 @@ const store = Redux.createStore(scoreReducer);
 const render = () => {
     const state = store.getState();
     totalScore.innerHTML = state.value;
+    console.log(state);
 }
 
 render();
 store.subscribe(render);
-
-
 
 addMatch.addEventListener('click', () => {
     matchCounter++;
